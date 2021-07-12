@@ -1,0 +1,26 @@
+@import "fonts.scss";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: #eee;
+}
+
+h1 {
+    color: steelblue;
+}
+
+
+$paragraph-color: tomato;
+
+p {
+    color: $paragraph-color;
+}
+
+.page-body {
+    display: flex;
+    flex-direction: column;
+}
