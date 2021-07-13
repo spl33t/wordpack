@@ -1,6 +1,5 @@
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const CopyPlugin = require("copy-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
@@ -75,6 +74,11 @@ module.exports = {
             {
                 //FONTS loader
                 test: /\.(ttf|wof|wof2|eot)$/,
+                use: ['file-loader']
+            },
+            {
+                //IMG loader
+                test: /\.(png|jpg|svg|gif)$/,
                 use: ['file-loader']
             },
             {
