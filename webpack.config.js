@@ -9,8 +9,7 @@ const isProd = !isDev
 const optimization = () => {
     const config = {
         splitChunks: {
-            //Не подключать одни и теже библиотеки два раза
-            chunks: 'all'
+            //chunks: 'all' //Разбить файлы по частям
         },
     }
     if (isProd) {
@@ -30,13 +29,13 @@ module.exports = {
         main: './index.js', //Путь основной JS
     },
     output: {
-        filename: 'main.js', //Название конечного JS
+        filename: '[name].js', //Название конечного JS
         path: path.resolve(__dirname, 'dist') //Путь конечной директории
     },
     resolve: {
         alias: {
             '@css': path.resolve(__dirname, 'assets/css'), //Директория CSS
-            '@js': path.resolve(__dirname, 'assets/js') //Директория JS
+            '@js': path.resolve(__dirname, 'assets/js'), //Директория JS
         }
     },
     optimization: optimization(),

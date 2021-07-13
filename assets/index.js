@@ -1,11 +1,15 @@
-
-import Post from './js/Post'
+import Flickity from 'flickity'
+import Post from '@js/Post'
 import scss from '@css/scss.scss'
 
 const post = new Post('Webpack Title');
 
 console.log(post.toString());
 
-//console.log('JSON:', json)
-//console.log('XML:', xml)
-//console.log('CSV:', csv)
+var flky = new Flickity( '.gallery', {
+    cellAlign: 'left',
+    contain: true,
+    freeScroll: true,
+    prevNextButtons: false,
+    pageDots: false
+});
