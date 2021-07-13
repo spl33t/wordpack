@@ -1,5 +1,5 @@
 
-import Post from './Post'
+import Post from './js/Post'
 import scss from '@css/scss.scss'
 
 const post = new Post('Webpack Title');

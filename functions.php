@@ -8,12 +8,15 @@ add_action( 'wp_enqueue_scripts', 'true_enqueue_js_and_css' );
  
 function true_enqueue_js_and_css() {
  
+	$versionJS = rand(0, 10);
+	$versionCSS = rand(10, 20);
+
 	// CSS
 	wp_enqueue_style( 
 		'styles', // идентификатор стиля
 		get_stylesheet_directory_uri() . '/dist/main.css',  // URL стиля
 		array(), // без зависимостей
-		'_bld_1507921193074' // версия
+		$versionCSS // версия
 	);
  
 	// JavaScript
@@ -21,7 +24,7 @@ function true_enqueue_js_and_css() {
 		'scripts', // идентификатор скрипта
 		get_stylesheet_directory_uri() . '/dist/main.js', // URL скрипта
 		array(), // без зависимостей
-		'_bld_1507921193074' // версия
+		$versionJS // версия
 	);
  
 }

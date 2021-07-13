@@ -1,14 +1,34 @@
 const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
+const TerserPlugin = require("terser-webpack-plugin")
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
+const isDev = process.env.NODE_ENV === 'development' //Проверка является ли сборка DEV
+const isProd = !isDev
+
+const optimization = () => {
+    const config = {
+        splitChunks: {
+            //Не подключать одни и теже библиотеки два раза
+            chunks: 'all'
+        },
+    }
+    if (isProd) {
+        config.minimizer = [
+            new OptimizeCssAssetsPlugin(),
+            new TerserPlugin()
+        ]
+    }
+
+    return config
+}
 
 module.exports = {
     context: path.resolve(__dirname, 'assets'), //Директория с исходниками *
     mode: 'development',
     entry: {
-        main: './js/index.js', //Путь основной JS
+        main: './index.js', //Путь основной JS
     },
     output: {
         filename: 'main.js', //Название конечного JS
@@ -20,12 +40,17 @@ module.exports = {
             '@js': path.resolve(__dirname, 'assets/js') //Директория JS
         }
     },
+    optimization: optimization(),
     plugins: [
-        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
     ],
     module: {
         rules: [
+            {
+                //CSS loader
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
             {
                 //SAS loader
                 test: /\.s[ac]ss$/,
@@ -52,6 +77,17 @@ module.exports = {
                 test: /\.(ttf|wof|wof2|eot)$/,
                 use: ['file-loader']
             },
+            {
+                //BABEL Обработчик JS
+                test: /\.m?js$/,
+                exclude: /node_modules/, //Не обрабатывать папку node_
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
         ],
     },
 }
