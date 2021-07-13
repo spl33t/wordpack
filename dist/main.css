@@ -360,29 +360,10 @@ template {
   font-family: "Roboto";
   src: url(a8d6ac03c7b96b7acb6228ff2676139d.ttf) format("truetype");
 }
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: "Roboto", sans-serif;
   background: #eee;
   counter-reset: gallery-cell;
-}
-
-h2 {
-  color: steelblue;
-}
-
-p {
-  color: tomato;
-}
-
-.page-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .gallery {
