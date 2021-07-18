@@ -44,11 +44,12 @@ if (!empty($errors)) {
 		$body .= '<p><strong>Телефон:</strong> ' . $_POST['phone'] . '</p>';
 	}
 
+	$from = get_option('admin_email');
 	$to = 'spl33t@ya.ru';
 	$subject =  title_mail();
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
-		'From: Me Myself <spl33t@ya.ru>'
+		''.get_bloginfo() .' <'.$from.'>'
 	);
 
 	wp_mail($to, $subject, $body, $headers);

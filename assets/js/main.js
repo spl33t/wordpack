@@ -1,17 +1,4 @@
-import * as $ from 'jquery';
-import Flickity from 'flickity'
-
-//Flickity Slider
-let gallery = document.getElementsByClassName('gallery')
-if (gallery.length !== 0) {
-    var flky = new Flickity('.gallery', {
-        cellAlign: 'left',
-        contain: true,
-        freeScroll: true,
-        prevNextButtons: false,
-        pageDots: false
-    });
-}
+jQuery(document).ready(function ($) {
 
 //Валидация и AJAX отправка формы
 $(document).ready(function () {
@@ -77,4 +64,12 @@ $(document).ready(function () {
     }
 
 });
+
+});
+
+
+
+
+
+
 

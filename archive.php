@@ -2,40 +2,39 @@
 
 
 <main class="page-body">
-	<?php if (have_posts()) : ?>
-		<header class="archive-header">
-			<h1 class="archive-title">
+	<div class="content">
+		<?php if (have_posts()) : ?>
+
+			<header class="page-header">
 				<?php
-				if (is_day()) {
-					/* translators: %s: Date. */
-					printf(__('Daily Archives: %s', 'twentythirteen'), get_the_date());
-				} elseif (is_month()) {
-					/* translators: %s: Date. */
-					printf(__('Monthly Archives: %s', 'twentythirteen'), get_the_date(_x('F Y', 'monthly archives date format', 'twentythirteen')));
-				} elseif (is_year()) {
-					/* translators: %s: Date. */
-					printf(__('Yearly Archives: %s', 'twentythirteen'), get_the_date(_x('Y', 'yearly archives date format', 'twentythirteen')));
-				} else {
-					_e('Archives', 'twentythirteen');
-				}
+				the_archive_title('<h1 class="page-title">', '</h1>');
 				?>
-			</h1>
-		</header><!-- .archive-header -->
+			</header>
 
-		<?php
-		// Start the loop.
-		while (have_posts()) :
-			the_post();
-		?>
-			<?php get_template_part('content', get_post_format()); ?>
-		<?php endwhile; ?>
+		<?php while (have_posts()) :
+				the_post();
 
-		<?php twentythirteen_paging_nav(); ?>
+				the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
 
-	<?php else : ?>
-		<?php get_template_part('content', 'none'); ?>
-	<?php endif; ?>
 
+				the_content(
+					sprintf(
+						wp_kses(
+
+							__('Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentynineteen'),
+							array(
+								'span' => array(
+									'class' => array(),
+								),
+							)
+						),
+						get_the_title()
+					)
+				);
+
+			endwhile;
+		endif; ?>
+	</div>
 </main>
 
 

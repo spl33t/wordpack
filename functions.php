@@ -91,6 +91,7 @@ add_action('wp_enqueue_scripts', 'true_enqueue_js_and_css');
 function true_enqueue_js_and_css()
 {
 
+	wp_enqueue_script( 'jquery' );
 	// CSS
 	wp_enqueue_style(
 		'styles', // идентификатор стиля
@@ -107,6 +108,8 @@ function true_enqueue_js_and_css()
 		time(), // версия
 		true
 	);
+
+
 }
 
 

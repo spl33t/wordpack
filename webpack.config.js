@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development' //Проверка является ли сборка DEV
 const isProd = !isDev
@@ -41,7 +41,29 @@ module.exports = {
     },
     optimization: optimization(),
     plugins: [
-        new MiniCssExtractPlugin()
+        // Создаем svg-спрайт с иконками
+        new SVGSpritemapPlugin(
+            'assets/img/icons/*.svg', // Путь относительно каталога с webpack.mix.js
+            {
+                output: {
+                    filename: 'icons.svg', // Путь относительно каталога public/
+                    svg4everybody: false, // Отключаем плагин "SVG for Everybody"
+                    svg: {
+                        sizes: false // Удаляем инлайновые размеры svg
+                    },
+                    chunk: {
+                        keep: true, // Включаем, чтобы при сборке не было ошибок из-за отсутствия spritemap.js
+                    },
+                },
+                sprite: {
+                    prefix: 'icon-', // Префикс для id иконок в спрайте, будет иметь вид 'icon-имя_файла_с_иконкой'
+                    generate: {
+                        title: false, // Не добавляем в спрайт теги <title>
+                    },
+                },
+            }
+        ),
+        new MiniCssExtractPlugin(),
     ],
     module: {
         rules: [
@@ -53,7 +75,7 @@ module.exports = {
             {
                 //SAS loader
                 test: /\.s[ac]ss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
+                use: [MiniCssExtractPlugin.loader, 'css-loader',
                 {
                     loader: "postcss-loader",
                     options: {
@@ -68,12 +90,12 @@ module.exports = {
                             ],
                         },
                     },
-                },
+                }, 'sass-loader',
                 ]
             },
             {
                 //FONTS loader
-                test: /\.(ttf|wof|wof2|eot)$/,
+                test: /\.(ttf|woff|woff2|eot)$/,
                 use: ['file-loader']
             },
             {

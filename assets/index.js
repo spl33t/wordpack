@@ -1,2 +1,2 @@
 import main from '@js/main'
-import scss from '@css/scss.scss'
+import scss from '@css/styles.scss'

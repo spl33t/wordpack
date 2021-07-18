@@ -1,0 +1,47 @@
+* {
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: 0 0 20px $brand-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $brand-color;
+    box-shadow: 0 0 20px $brand-color;
+}
+
+//Ссылки
+a {
+    color: $text-color;
+}
+//Изображения
+img, video {
+    max-width: 100%;
+}
+//Списки
+ul {
+}
+
+//Формы, кнопки, инпуты
+input,
+button,
+textarea {
+    font-family: inherit;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 3px;
+}
+input {
+}
+button {
+    border: none;
+}
+textarea {
+}
+

@@ -1,0 +1,18 @@
+/* Default */
+@import "reset";
+@import 'variables';
+
+/* Типография */
+@import 'typography/typography';
+@import 'typography/headings';
+@import 'typography/include-fonts';
+
+/* Элементы, кнопки, списки, ссылки */
+@import 'elements/elements';
+@import 'elements/sections';
+
+/* Страница, шапка, тело, футер */
+@import "page/page";
+@import "page/header";
+@import "page/body";
+@import "page/footer";
