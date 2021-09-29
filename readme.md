@@ -11,18 +11,18 @@ Theme for WordPress using WebPack
 
 **Попап с сообщением**  
 
-     ```javascript
+     ```html
      <button class="popup-message button-black xl-button" data-title="Заголовок попапчика" data-text="Какой то текст">Попап с сообщением</button>
      ```
 
 **Попап с формой**  
 
-    ```javascript
+    ```html
     <button class="popup-form button-white xl-button" data-title="Заголовок попапчика" data-text="Какой то текст">Попап с формой</button>
     ```
 **Попап для медиафайлов**  
 
-    ```javascript
+    ```html
     <img class="popup-media lazy-img" data-src="http://wp-webpack/wp-content/uploads/2021/09/1.webp" alt="">
     ```
 
@@ -30,9 +30,10 @@ Theme for WordPress using WebPack
 ##  Forms
 
 **Функция вызова формы**  
-    <!-- language: php -->
+
+    ```php
     echo get_form(['name', 'phone', textarea], 'hero', 'Отправить'); 
-  
+    ```
 
 
 
