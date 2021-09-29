@@ -11,18 +11,18 @@ Theme for WordPress using WebPack
 
 **Попап с сообщением**  
 
-     ```html
+     ```javascript
      <button class="popup-message button-black xl-button" data-title="Заголовок попапчика" data-text="Какой то текст">Попап с сообщением</button>
      ```
 
 **Попап с формой**  
 
-    ```html
+    ```javascript
     <button class="popup-form button-white xl-button" data-title="Заголовок попапчика" data-text="Какой то текст">Попап с формой</button>
     ```
 **Попап для медиафайлов**  
 
-    ```html
+    ```javascript
     <img class="popup-media lazy-img" data-src="http://wp-webpack/wp-content/uploads/2021/09/1.webp" alt="">
     ```
 
