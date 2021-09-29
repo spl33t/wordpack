@@ -30,9 +30,9 @@ Theme for WordPress using WebPack
 ##  Forms
 
 **Функция вызова формы**  
-    ```php
+    <!-- language: php -->
     echo get_form(['name', 'phone', textarea], 'hero', 'Отправить'); 
-    ```
+  
 
 
 
