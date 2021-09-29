@@ -1,96 +1,9 @@
 <?php
-// Carbon_Fields
-use Carbon_Fields\Container;
-use Carbon_Fields\Field;
-
-add_action('carbon_fields_register_fields', 'crb_attach_theme_options');
-function crb_attach_theme_options()
-{
-	/*
-	/ Глобальные настройки темы
-	*/
-	Container::make('theme_options',  'Настройки темы')
-		->add_fields(array(
-			//Брэндинг
-			Field::make('separator', 'site-branding', 'Брендинг'),
-			Field::make('image', 'site-logo-white', 'Белое лого')
-				->set_value_type('url')
-				->set_width(50),
-			Field::make('image', 'site-logo-black', 'Чёрное лого')
-				->set_value_type('url')
-				->set_width(50),
-			Field::make('color', 'site-color-main', 'Основной цвет'),
-			//Контакты
-			Field::make('separator', 'site-contact', 'Контакты'),
-			Field::make('text', 'site-telephone', 'Телефон')
-				->set_width(50),
-			Field::make('text', 'site-telephone-work', 'Время работы телефона')
-				->set_width(50),
-			Field::make('text', 'site-add-telephone', 'Дополнительный телефон')
-				->set_width(50),
-			Field::make('text', 'site-add-telephone-work', 'Время дополнительного телефона')
-				->set_width(50),
-			Field::make('text', 'site-adress', 'Адрес')
-				->set_width(50),
-			Field::make('text', 'site-adress-work', 'Время работы адреса')
-				->set_width(50),
-			Field::make('text', 'site-email', 'Электронная почта')
-				->set_width(100),
-			Field::make('text', 'site-inn', 'ИНН')
-				->set_width(50),
-			Field::make('text', 'site-ogrn', 'ОГРН')
-				->set_width(50),
-			//Соц. сети, мессенджеры
-			Field::make('separator', 'site-social', 'Соц. сети / Мессенджеры'),
-			Field::make('text', 'site-whatsapp', 'Whatsapp')
-				->set_width(33),
-			Field::make('text', 'site-telegram', 'Telegram')
-				->set_width(33),
-			Field::make('text', 'site-viber', 'Viber')
-				->set_width(33),
-			Field::make('text', 'site-instagram', 'Instagram')
-				->set_width(33),
-			Field::make('text', 'site-youtube', 'Youtube')
-				->set_width(33),
-			Field::make('text', 'site-facebook', 'Facebook')
-				->set_width(33),
-			Field::make('text', 'site-vk', 'VK')
-				->set_width(33),
-			Field::make('text', 'site-tik-tok', 'Tik Tok')
-				->set_width(33),
-			//Другое, счётчики
-			Field::make('separator', 'site-other', 'Другое'),
-			Field::make('textarea', 'site-ya-metrika', 'Код счетчика Я.Метрика'),
-			Field::make('textarea', 'site-google-analytics', 'Код счетчика Google Analytics'),
-		));
-
-	/*
-	/ СЕО
-	*/
-	Container::make('post_meta', 'SEO', 'SEO')
-		->add_fields(array(
-			Field::make('textarea', 'seo-title', 'Title'),
-			Field::make('textarea', 'seo-description', 'Description Meta'),
-			Field::make('textarea', 'seo-keywords', 'Keywords Meta')
-		));
-}
-
-add_action('after_setup_theme', 'crb_load');
-function crb_load()
-{
-	require_once('vendor/autoload.php');
-	\Carbon_Fields\Carbon_Fields::boot();
-}
-
 
 /**
- * Loads <list assets here>.
+ * Loads Scripts and Styles
  */
-add_action('wp_enqueue_scripts', 'true_enqueue_js_and_css');
-
-function true_enqueue_js_and_css()
-{
-
+add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('jquery');
 	// CSS
 	wp_enqueue_style(
@@ -108,17 +21,63 @@ function true_enqueue_js_and_css()
 		time(), // версия
 		true
 	);
+});
+
+/**
+ * Loads Other Functions
+ */
+if ('Loads Other Functions') {
+	require_once(__DIR__ . '/includes/carbon-fileds.php');
+	require_once(__DIR__ . '/includes/custom-post-type.php');
+	require_once(__DIR__ . '/includes/duplicate-posts.php');
+	require_once(__DIR__ . '/includes/disable-wp-search.php');
+	require_once(__DIR__ . '/includes/disable-gutenberg.php');
+	require_once(__DIR__ . '/includes/disable-emojis.php');
+	require_once(__DIR__ . '/includes/disable-oembed.php');
+	require_once(__DIR__ . '/includes/seo.php');
+	//require_once(__DIR__ . '/includes/debug.php');
 }
 
 /*
-* Поддержка некоторых опций в теме (add_theme_support)
+* Global variables for JavaScript
+*/
+add_action('wp_head', function () { ?>
+	<script type="text/javascript">
+		var templateUrl = '<?php echo get_template_directory_uri(); ?>';
+	</script>
+<?php });
+
+/*
+* Support theme functions (add_theme_support)
 */
 add_action('after_setup_theme', function () {
 	add_theme_support('post-thumbnails');
+	// Other functions on link
+	// https://wp-kama.ru/function/add_theme_support#html5
 });
 
+function get_form($input_names, $class_name, $button_text)
+{
+	$inputs = '';
+
+	foreach ($input_names as $input) {
+		if ($input == 'phone') $inputs .= '<input class="xl-input _req" type="text" name="phone" required="true" placeholder="Телефон *" />';
+		if ($input == 'name') $inputs .= '<input class="xl-input" type="text" name="name" placeholder="Имя" />';
+		if ($input == 'letter') $inputs .= '<textarea name="textarea" placeholder="Сообщение"></textarea>';
+	}
+
+	return '<form class="form-order" id="form-' . $class_name . '">
+	' . $inputs . '
+	<textarea name="comment"></textarea>
+	<textarea name="message"></textarea>
+	<button class="button-brand xl-button">' . $button_text . '</button>
+  </form>';
+}
+
+
+
 /*
-* Регистрация области меню
+* Register menu areas
 */
 register_nav_menus(
 	array(
@@ -127,127 +86,32 @@ register_nav_menus(
 );
 
 /*
-* Отключение стилей для Gutenberg
-*/
-function dm_remove_wp_block_library_css()
-{
-	wp_dequeue_style('wp-block-library');
-}
-add_action('wp_enqueue_scripts', 'dm_remove_wp_block_library_css');
-
-## Отключает Гутенберг (новый редактор блоков в WordPress).
-## ver: 1.2
-if ('disable_gutenberg') {
-	remove_theme_support('core-block-patterns'); // WP 5.5
-
-	add_filter('use_block_editor_for_post_type', '__return_false', 100);
-
-	// отключим подключение базовых css стилей для блоков
-	// ВАЖНО! когда выйдут виджеты на блоках или что-то еще, эту строку нужно будет комментировать
-	remove_action('wp_enqueue_scripts', 'wp_common_block_scripts_and_styles');
-
-	// Move the Privacy Policy help notice back under the title field.
-	add_action('admin_init', function () {
-		remove_action('admin_notices', ['WP_Privacy_Policy_Content', 'notice']);
-		add_action('edit_form_after_title', ['WP_Privacy_Policy_Content', 'notice']);
-	});
-}
-
-
-
-/*
-/ Отключение эмоджи
-*/
-if ('Отключаем Emojis в WordPress') {
-
-	/**
-	 * Disable the emoji's
-	 */
-	function disable_emojis()
-	{
-		remove_action('wp_head', 'print_emoji_detection_script', 7);
-		remove_action('admin_print_scripts', 'print_emoji_detection_script');
-		remove_action('wp_print_styles', 'print_emoji_styles');
-		remove_action('admin_print_styles', 'print_emoji_styles');
-		remove_filter('the_content_feed', 'wp_staticize_emoji');
-		remove_filter('comment_text_rss', 'wp_staticize_emoji');
-		remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-		add_filter('tiny_mce_plugins', 'disable_emojis_tinymce');
-		add_filter('wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2);
-	}
-	add_action('init', 'disable_emojis');
-
-	/**
-	 * Filter function used to remove the tinymce emoji plugin.
-	 * 
-	 * @param    array  $plugins  
-	 * @return   array             Difference betwen the two arrays
-	 */
-	function disable_emojis_tinymce($plugins)
-	{
-		if (is_array($plugins)) {
-			return array_diff($plugins, array('wpemoji'));
-		}
-
-		return array();
-	}
-
-	/**
-	 * Remove emoji CDN hostname from DNS prefetching hints.
-	 *
-	 * @param  array  $urls          URLs to print for resource hints.
-	 * @param  string $relation_type The relation type the URLs are printed for.
-	 * @return array                 Difference betwen the two arrays.
-	 */
-	function disable_emojis_remove_dns_prefetch($urls, $relation_type)
-	{
-
-		if ('dns-prefetch' == $relation_type) {
-
-			// Strip out any URLs referencing the WordPress.org emoji location
-			$emoji_svg_url_bit = 'https://s.w.org/images/core/emoji/';
-			foreach ($urls as $key => $url) {
-				if (strpos($url, $emoji_svg_url_bit) !== false) {
-					unset($urls[$key]);
-				}
-			}
-		}
-
-		return $urls;
-	}
-}
-
-
-/*
-/ Delete Metabox Content on All Pages
-*/
-add_action('admin_init', 'remove_textarea');
-function remove_textarea()
-{
+ * Remove Metabox Content on All Pages
+ */
+add_action('admin_init', function () {
 	remove_post_type_support('page', 'editor');
+});
+
+/*
+ * Remove trash meta tags in <head> </head>
+ */
+if ('Remove trash meta tags in <head> </head>') {
+	remove_action('wp_head', 'wp_resource_hints', 2); //remove dns-prefetch
+	remove_action('wp_head', 'wp_generator'); //remove meta name="generator"
+	remove_action('wp_head', 'wlwmanifest_link'); //remove wlwmanifest
+	remove_action('wp_head', 'rsd_link'); // remove EditURI
+	remove_action('wp_head', 'rest_output_link_wp_head'); // remove 'https://api.w.org/
+	remove_action('wp_head', 'rel_canonical'); //remove canonical
+	remove_action('wp_head', 'wp_shortlink_wp_head', 10); //remove shortlink
+	remove_action('wp_head', 'wp_oembed_add_discovery_links'); //remove alternate
 }
 
 /*
-/ Добавляет SVG в список разрешенных для загрузки файлов.
-*/
-add_filter('upload_mimes', 'svg_upload_allow');
-function svg_upload_allow($mimes)
-{
-	$mimes['svg']  = 'image/svg+xml';
-
-	return $mimes;
-}
-
-remove_action('wp_head',             'print_emoji_detection_script', 7);
-remove_action('admin_print_scripts', 'print_emoji_detection_script');
-remove_action('wp_print_styles',     'print_emoji_styles');
-remove_action('admin_print_styles',  'print_emoji_styles');
-
-remove_action('wp_head', 'wp_resource_hints', 2); //remove dns-prefetch
-remove_action('wp_head', 'wp_generator'); //remove meta name="generator"
-remove_action('wp_head', 'wlwmanifest_link'); //remove wlwmanifest
-remove_action('wp_head', 'rsd_link'); // remove EditURI
-remove_action('wp_head', 'rest_output_link_wp_head'); // remove 'https://api.w.org/
-remove_action('wp_head', 'rel_canonical'); //remove canonical
-remove_action('wp_head', 'wp_shortlink_wp_head', 10); //remove shortlink
-remove_action('wp_head', 'wp_oembed_add_discovery_links'); //remove alternate
+ * jQuery Migrate Disable
+ */
+add_filter('wp_default_scripts', function (&$scripts) {
+	if (!is_admin()) {
+		$scripts->remove('jquery');
+		$scripts->add('jquery', false, array('jquery-core'), '1.12.4');
+	}
+});

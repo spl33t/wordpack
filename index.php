@@ -14,13 +14,7 @@
       }
     </style>
 
-    <form id="form-order">
-      <input type="text" name="name" placeholder="Имя" />
-      <input class="_req" type="text" name="phone" required="true" placeholder="Телефон *" />
-      <textarea name="comment"></textarea>
-      <textarea name="message"></textarea>
-      <button>Отправить</button>
-    </form>
+
   </div>
 </main>
 

@@ -1,6 +1,5 @@
 <?php
 
-
 $errors = [];
 $data = [];
 
@@ -35,21 +34,31 @@ if (!empty($errors)) {
 	$path = preg_replace('/wp-content(?!.*wp-content).*/', '', __DIR__);
 	require($path . 'wp-load.php');
 
+	//Формирование тела сообщения
 	$body = title_mail();
-
 	if (trim(!empty($_POST['name']))) {
-		$body .= '<p><strong>Имя:</strong> ' . $_POST['name'] . '</p>';
+		$body .= '<p><strong>Имя: </strong> ' . $_POST['name'] . '</p>';
 	}
 	if (trim(!empty($_POST['phone']))) {
-		$body .= '<p><strong>Телефон:</strong> ' . $_POST['phone'] . '</p>';
+		$body .= '<p><strong>Телефон: </strong> ' . $_POST['phone'] . '</p>';
+	}
+	if (trim(!empty($_POST['page']))) {
+		$body .= '<p><strong>Форма отправлена со страницы:</strong><a href="' . $_POST['pageurl'] . '"</a> ' . $_POST['page'] . '</a></p>';
+	}
+
+	//Получатель письма
+	if (carbon_get_theme_option('site-email')) {
+		$mailto = carbon_get_theme_option('site-email');
+	} else {
+		$mailto = 'spl33t@ya.ru';
 	}
 
 	$from = get_option('admin_email');
-	$to = 'spl33t@ya.ru';
+	$to = $mailto;
 	$subject =  title_mail();
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
-		''.get_bloginfo() .' <'.$from.'>'
+		'' . get_bloginfo() . ' <' . $from . '>'
 	);
 
 	wp_mail($to, $subject, $body, $headers);
