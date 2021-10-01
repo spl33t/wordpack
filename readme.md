@@ -10,7 +10,7 @@
 ##  Header
 
 **Фиксированая шапка**
-<p>Для  header `.fixed-header` для main `page-fixed-header`</p>
+Для  header `.fixed-header` для main `page-fixed-header`
 
 ##  Popups
 
