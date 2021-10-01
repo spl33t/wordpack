@@ -54,24 +54,6 @@ jQuery(document).ready(function ($) {
     })
 
 
-    /*
-        // Popup init for button
-        const serviceBtns = document.querySelectorAll('.popup-btn')
-        serviceBtns.forEach((e) => {
-            e.addEventListener('click', () => {
-    
-                if (e.getAttribute('data-title')) data.title = e.getAttribute('data-title')
-                if (e.getAttribute('data-text')) data.text = e.getAttribute('data-text')
-                if (e.getAttribute('data-media')) data.media = e.getAttribute('data-media')
-                if (e.getAttribute('data-form')) data.form = e.getAttribute('data-form')
-    
-    
-                createPopup(data)
-            })
-        })
-    */
-
-
     function createPopup(data) {
 
         let template = '';

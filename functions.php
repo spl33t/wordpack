@@ -1,7 +1,12 @@
 <?php
 
 /**
- * Loads Scripts and Styles
+ * The current version of the theme
+ */
+define( 'WP_WEBPACK_VERSION', '2.0' );
+
+/**
+ * Loads scripts and styles
  */
 add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('jquery');
@@ -24,18 +29,19 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 /**
- * Loads Other Functions
+ * Loads other functions
  */
 if ('Loads Other Functions') {
-	require_once(__DIR__ . '/includes/carbon-fileds.php');
-	require_once(__DIR__ . '/includes/custom-post-type.php');
-	require_once(__DIR__ . '/includes/duplicate-posts.php');
-	require_once(__DIR__ . '/includes/disable-wp-search.php');
-	require_once(__DIR__ . '/includes/disable-gutenberg.php');
-	require_once(__DIR__ . '/includes/disable-emojis.php');
-	require_once(__DIR__ . '/includes/disable-oembed.php');
-	require_once(__DIR__ . '/includes/seo.php');
-	//require_once(__DIR__ . '/includes/debug.php');
+	require get_theme_file_path('/includes/carbon-fileds.php');
+	require get_theme_file_path('/includes/custom-post-type.php');
+	require get_theme_file_path('/includes/duplicate-posts.php');
+	require get_theme_file_path('/includes/disable-wp-search.php');
+	require get_theme_file_path('/includes/disable-gutenberg.php');
+	require get_theme_file_path('/includes/disable-emojis.php');
+	require get_theme_file_path('/includes/disable-oembed.php');
+	require get_theme_file_path('/includes/seo.php');
+	require get_theme_file_path('/includes/nav-walker.php');
+	//get_theme_file_path('/includes/debug.php');
 }
 
 /*
@@ -81,7 +87,7 @@ function get_form($input_names, $class_name, $button_text)
 */
 register_nav_menus(
 	array(
-		'header_menu' => 'Header Menu',
+		'main_menu' => 'Main Menu',
 	)
 );
 
@@ -115,3 +121,5 @@ add_filter('wp_default_scripts', function (&$scripts) {
 		$scripts->add('jquery', false, array('jquery-core'), '1.12.4');
 	}
 });
+
+

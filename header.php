@@ -1,7 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+
+
+/**
+ * Template for header
+ */
+
+?>
+
+<!doctype html>
+<html <?php language_attributes(); ?>>
 
 <head>
+	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<?php $yandex_metrika = carbon_get_theme_option('site-ya-metrika'); ?>
 	<?php if ($yandex_metrika) : ?>
 		<?php echo $yandex_metrika; ?>
@@ -12,24 +24,20 @@
 		<?php echo $google_analytics; ?>
 	<?php endif; ?>
 
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<?php wp_head(); ?>
 </head>
 
-<body>
-	<div class="page">
-		<header class="page-header content">
-			<a class="logo" href="/">
-				<?php echo get_bloginfo() ?>
-			</a>
+<body <?php body_class('no-js'); ?>>
 
-			<?php
-			wp_nav_menu(array(
-				'theme_location'  => 'header_menu',
-				'container'       => 'nav',
-				'container_class'      => 'page-header__menu',
-			));
-			?>
+	<?php wp_body_open(); ?>
 
-		</header>
+	<div id="page" class="site">
+
+		<div class="header-container fixed-header">
+			<header class="site-header">
+				<?php get_template_part('template-parts/header/branding'); ?>
+				<?php get_template_part('template-parts/header/navigation'); ?>
+			</header>
+		</div>
+
+		<main class="page-body page-fixed-header">

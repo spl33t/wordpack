@@ -1,11 +1,16 @@
 #  wp-webpack
-
-Theme for WordPress using WebPack
+<p>Theme for WordPress using WebPack</p>
 
 ![wp-webpack](https://www.makedo.net/wp-content/uploads/2019/02/wpandwp.png)
 
+* [Header](https://github.com/spl1t/wp-webpack#header)
 * [Popups](https://github.com/spl1t/wp-webpack#popups)
 * [Forms](https://github.com/spl1t/wp-webpack#forms)
+
+##  Header
+
+**Фиксированая шапка**
+<p>Для тега <header></header> добавить класс <pre>.fixed-header</pre></p>
 
 ##  Popups
 
@@ -32,7 +37,7 @@ Theme for WordPress using WebPack
 **Функция вызова формы**  
 
 ```php
-echo get_form(['name', 'phone', textarea], 'hero', 'Отправить'); 
+<?php echo get_form(['name', 'phone',], 'hero', 'Отправить');  ?>
 ```
 
 
