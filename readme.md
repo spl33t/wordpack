@@ -10,7 +10,7 @@
 ##  Header
 
 **Фиксированая шапка**
-<p>Для тега <header></header> добавить класс <pre>.fixed-header</pre></p>
+<p>Для  header `.fixed-header` для main `page-fixed-header`</p>
 
 ##  Popups
 
