@@ -1,5 +1,23 @@
-#  WordPack Theme
+#  WordPack theme
 <p>Wordpress theme compiled by Wepback</p>
+
+## Start
+
+Paste code to terminal, the result will be installation last version Wordpress and WordPack theme
+
+```
+cd C:\localserver\OSPanel\domains
+git clone git://core.git.wordpress.org/ project_name
+cd project_name
+RMDIR .git
+cd wp-content
+RMDIR themes /S /Q
+mkdir themes
+cd themes
+git clone https://github.com/spl1t/wp-webpack.git
+cd C:\localserver\OSPanel\domains
+rename C:\localserver\OSPanel\domains\project_name project_true
+```
 
 ![wp-webpack](https://github.com/spl1t/wp-webpack/blob/master/screenshot.png?raw=true)
 
