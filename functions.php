@@ -3,7 +3,7 @@
 /**
  * The current version of the theme
  */
-define( 'WP_WEBPACK_VERSION', '2.0' );
+define('WORDPACK_VERSION', '2.0');
 
 /**
  * Loads scripts and styles
@@ -35,13 +35,14 @@ if ('Loads Other Functions') {
 	require get_theme_file_path('/includes/carbon-fileds.php');
 	require get_theme_file_path('/includes/custom-post-type.php');
 	require get_theme_file_path('/includes/duplicate-posts.php');
-	require get_theme_file_path('/includes/disable-wp-search.php');
+	//require get_theme_file_path('/includes/disable-wp-search.php');
+	//require get_theme_file_path('/includes/disable-wp-comments.php');
 	require get_theme_file_path('/includes/disable-gutenberg.php');
 	require get_theme_file_path('/includes/disable-emojis.php');
-	require get_theme_file_path('/includes/disable-oembed.php');
+	//require get_theme_file_path('/includes/disable-oembed.php');
 	require get_theme_file_path('/includes/seo.php');
 	require get_theme_file_path('/includes/nav-walker.php');
-	//get_theme_file_path('/includes/debug.php');
+	//require get_theme_file_path('/includes/debug.php');
 }
 
 /*
@@ -62,22 +63,36 @@ add_action('after_setup_theme', function () {
 	// https://wp-kama.ru/function/add_theme_support#html5
 });
 
+/*
+* Get Form
+*/
 function get_form($input_names, $class_name, $button_text)
 {
 	$inputs = '';
 
 	foreach ($input_names as $input) {
-		if ($input == 'phone') $inputs .= '<input class="xl-input _req" type="text" name="phone" required="true" placeholder="Телефон *" />';
-		if ($input == 'name') $inputs .= '<input class="xl-input" type="text" name="name" placeholder="Имя" />';
-		if ($input == 'letter') $inputs .= '<textarea name="textarea" placeholder="Сообщение"></textarea>';
+		if ($input == 'phone') $inputs .= '<div class="input-field">
+												<input class="_req" id="tel" name="tel" type="tel" required>
+												<label for="tel">Телефон</label>
+											</div>';
+
+		if ($input == 'name') $inputs .= '<div class="input-field">
+												<input id="name" name="name" type="text">
+												<label for="name">Имя</label>
+											</div>';
+
+		if ($input == 'letter') $inputs .= '<div class="input-field">
+												<textarea id="letter" name="letter"> </textarea>
+												<label for="letter">Сообщение</label>
+											</div>';
 	}
 
 	return '<form class="form-order" id="form-' . $class_name . '">
-	' . $inputs . '
-	<textarea name="comment"></textarea>
-	<textarea name="message"></textarea>
-	<button class="button-brand xl-button">' . $button_text . '</button>
-  </form>';
+				' . $inputs . '
+				<textarea name="comment"></textarea>
+				<textarea name="message"></textarea>
+				<input type="submit" value="' . $button_text . '">
+			</form>';
 }
 
 
@@ -121,5 +136,3 @@ add_filter('wp_default_scripts', function (&$scripts) {
 		$scripts->add('jquery', false, array('jquery-core'), '1.12.4');
 	}
 });
-
-

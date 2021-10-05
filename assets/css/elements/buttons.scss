@@ -1,0 +1,90 @@
+/**
+/ Global button styles
+*/
+
+.page-content {
+    button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+        font-size: $text-size-forms;
+        background-color: $brand-color;
+        border: 2px solid;
+        color: #fff;
+        border-color: $brand-color;
+        border-radius: $border-radius-forms;
+        padding: $padding-forms;
+        height: $height-forms;
+        width: inherit;
+        font-weight: 600;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+        &:focus {
+            border: 2px solid $brand-color;
+        }
+    }
+
+    /**
+    / Color variants
+    */
+
+    // Brand color
+    .button-brand {
+        background-color: $brand-color;
+        border-color: $brand-color;
+        color: #fff;
+        fill: #fff;
+        a {
+            color: #fff;
+        }
+        &:hover {
+            background-color: #fff;
+            border-color: $brand-color;
+            color: $brand-color;
+            fill: $brand-color;
+            a {
+                color: $brand-color;
+            }
+        }
+    }
+
+    // Black color
+    .button-black {
+        border-color: #000;
+        background-color: #000;
+        color: #fff;
+        fill: #fff;
+        a {
+            color: #fff;
+        }
+        &:hover {
+            background-color: $brand-color;
+            border-color: $brand-color;
+            color: #fff;
+            fill: #fff;
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    // Brand black
+    .button-white {
+        border-color: #ddd;
+        background-color: #fff;
+        color: #000;
+        fill: #000;
+        a {
+            color: #000;
+        }
+        &:hover {
+            border-color: $brand-color;
+            background-color: $brand-color;
+            color: #fff;
+            fill: #fff;
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

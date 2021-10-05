@@ -1,7 +1,7 @@
 {
-  "name": "wp-webpack",
-  "version": "1.0.0",
-  "description": "wordpress theme compiled by wepback",
+  "name": "WordPack",
+  "version": "2.0.0",
+  "description": "Wordpress theme compiled by wepback",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
@@ -13,7 +13,7 @@
     "last 2 version",
     "not dead",
     "iOS >= 9",
-    "IE 10"
+    "IE 9"
   ],
   "keywords": [
     "wordpress",

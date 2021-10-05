@@ -56,6 +56,24 @@ add_action('wp_head', function () {
         $keys .= $default_keywords;
     }
     echo '<meta name="keywords" content="' . esc_attr($keys) . '">';
+
+    //Open Graph
+    //og:type
+    if (is_singular('post')) {
+        echo '<meta property="og:type" content="article">';
+    } else {
+        echo '<meta property="og:type" content="website">';
+    }
+    // og:title
+    echo '<meta property="og:title" content="' .  esc_attr($seo_title . $page_number)  . '">';
+    // og:desc
+    echo '<meta property="og:description" content="' . esc_attr($description) . '">';
+    // og:url
+    echo '<meta property="og:url" content="' . get_permalink() . '">';
+    // og:sitename
+    echo '<meta property="og:site_name" content="' . get_bloginfo('name', 'display') . '">';
+    // og:image
+    if (get_the_post_thumbnail_url()) echo '<meta property="og:image" content="' . get_the_post_thumbnail_url()  . '">';
 }, -1000);
 
 

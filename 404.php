@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-
 <main class="page-body">
 	<div class="content">
 		<header>
@@ -10,6 +9,5 @@
 		<a href="/">Перейти на главную страницу</a>
 	</div>
 </main>
-
 
 <?php get_footer(); ?>

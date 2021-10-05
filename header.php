@@ -1,28 +1,22 @@
 <?php
-
-
 /**
  * Template for header
  */
-
 ?>
 
-<!doctype html>
-<html <?php language_attributes(); ?>>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>  prefix="og: http://ogp.me/ns#">
 
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<?php $yandex_metrika = carbon_get_theme_option('site-ya-metrika'); ?>
-	<?php if ($yandex_metrika) : ?>
-		<?php echo $yandex_metrika; ?>
-	<?php endif; ?>
-
-	<?php $google_analytics = carbon_get_theme_option('site-google-analytics'); ?>
-	<?php if ($google_analytics) : ?>
-		<?php echo $google_analytics; ?>
-	<?php endif; ?>
+	<?php $scripts = carbon_get_theme_option('site-head-include'); ?>
+	<?php if ($scripts) : ?>
+		<?php foreach ($scripts as $script) : ?>
+			<?php echo $script['tag']; ?>
+		<?php endforeach; ?>
+	<?php endif ?>
 
 	<?php wp_head(); ?>
 </head>
@@ -33,11 +27,49 @@
 
 	<div id="page" class="site">
 
-		<div class="header-container fixed-header">
-			<header class="site-header">
-				<?php get_template_part('template-parts/header/branding'); ?>
-				<?php get_template_part('template-parts/header/navigation'); ?>
-			</header>
-		</div>
+		<header class="page-header sticky-header">
+			<div class="page-header-inner">
 
-		<main class="page-body page-fixed-header">
+				<!-- Brandig Start -->
+				<a class="site-branding" href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+					<svg class="site-logo">
+						<use xlink:href="<?php echo get_template_directory_uri() ?>/dist/icons.svg#icon-instagram" />
+					</svg>
+					<p class="site-title"> <?php bloginfo('name'); ?> </p>
+				</a>
+				<!-- Brandig End -->
+
+				<!-- Nav Start -->
+				<div class="main-navigation-wrapper" id="main-navigation-wrapper">
+
+					<button class="burger-menu" type="button" aria-label="Открыть главное меню навигации по сайту">
+						<span class="burger-menu-icon">
+							<span class="burger-menu-icon-top"></span>
+							<span class="burger-menu-icon-middle"></span>
+							<span class="burger-menu-icon-bottom"></span>
+						</span>
+						<span class="burger-menu-label">Открыть меню</span>
+					</button>
+
+					<nav class="nav-main" aria-label="Главная навигация">
+						<?php wp_nav_menu(array(
+							'theme_location' => 'main_menu',
+							'container'      => false,
+							'depth'          => 4,
+							'menu_class'     => 'menu-items',
+							'menu_id'        => 'main-menu',
+							'echo'           => true,
+							'fallback_cb'    => __NAMESPACE__ . '\Nav_Walker::fallback',
+							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+							'has_dropdown'   => true,
+							'walker'         => new Nav_Walker(),
+						)); ?>
+					</nav>
+
+				</div>
+				<!-- Nav End -->
+
+			</div>
+		</header>
+
+		<main class="page-content">

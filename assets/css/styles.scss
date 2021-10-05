@@ -4,17 +4,23 @@
 
 /* Типография */
 @import 'typography/typography';
-@import 'typography/headings';
 @import 'typography/include-fonts';
 
 /* Элементы, кнопки, списки, ссылки */
 @import 'elements/elements';
 @import 'elements/forms';
+@import 'elements/tables';
+@import 'elements/lists';
+@import 'elements/buttons';
 @import 'elements/popup';
-@import 'elements/sections';
+@import 'elements/titles';
 
 /* Страница, шапка, тело, футер */
 @import "page/page";
-@import "template-parts/header";
-@import "page/body";
+@import "page/header";
+@import "page/content";
 @import "page/footer";
+
+/* Template Parts */
+@import "template-parts/hero";
+

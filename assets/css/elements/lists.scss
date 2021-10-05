@@ -1,0 +1,15 @@
+$list-marker-color: #000;
+
+ul,
+ol {
+    padding-left: 20px;
+    ::marker {
+        color: $list-marker-color;
+    }
+}
+
+ol {
+}
+
+ul {
+}

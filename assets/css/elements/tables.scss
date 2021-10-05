@@ -1,0 +1,24 @@
+$thead-bg: #333;
+$thead-text-color: #fff;
+
+table {
+    text-align: left;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+thead {
+    background-color: $thead-bg;
+    color: $thead-text-color;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+th,
+td {
+    padding: 10px;
+}
+
+th {
+    font-weight: 600;
+}
+

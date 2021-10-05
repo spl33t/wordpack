@@ -1,6 +1,11 @@
+/**
+/ Include fonts
+*/
+
+// Headings
 @font-face {
     font-family: 'Bebas';
-    src: url('../fonts/BebasNeuePro-ExpandedRegular.woff') format('truetype');
+    src: url('../fonts/headings/BebasNeuePro-ExpandedRegular.woff') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -8,7 +13,7 @@
 
 @font-face {
     font-family: 'Bebas';
-    src: url('../fonts/BebasNeuePro-ExpandedBold.woff') format('truetype');
+    src: url('../fonts/headings/BebasNeuePro-ExpandedBold.woff') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -16,8 +21,37 @@
 
 @font-face {
     font-family: 'Bebas';
-    src: url('../fonts/BebasNeuePro-ExpandedExtraBold.woff') format('truetype');
+    src: url('../fonts/headings/BebasNeuePro-ExpandedExtraBold.woff') format('truetype');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
 }
+
+
+// Text
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/text/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/text/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/text/Montserrat-Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+

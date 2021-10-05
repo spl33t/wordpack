@@ -1,0 +1,50 @@
+/**
+/ Header variables
+*/
+
+//Colors
+$hero-bg: transparent;
+$hero-text-color: #000;
+$hero-link-hover-color: red;
+$hero-link-active-color: red;
+
+.hero {
+    background-color: $hero-bg;
+    border-bottom: 1px solid #eee;
+    p,
+    h1,
+    h2,
+    span {
+        color: $hero-text-color;
+    }
+}
+
+.hero__title {
+    margin-bottom: 10px;
+}
+
+.hero__subtitle {
+    margin-bottom: 60px;
+}
+
+#form-hero {
+    display: flex;
+    flex-wrap: wrap;
+    .input-field {
+        margin-right: 20px;
+        :last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: #{$bp-landscape}) {
+    #form-hero {
+        flex-direction: column;
+        .input-field {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+}

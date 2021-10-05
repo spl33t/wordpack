@@ -1,0 +1,14 @@
+.page-content {
+    width: 100%;
+    flex: 1 1 auto;
+}
+
+.content {
+    padding-top: $pd-container-v;
+    padding-bottom: $pd-container-v;
+    padding-left: $pd-container-h;
+    padding-right: $pd-container-h;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $page-w;
+}

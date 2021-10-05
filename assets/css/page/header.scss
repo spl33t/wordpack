@@ -1,30 +1,30 @@
-$header-text-color: #fff;
-$header-text-hover-color: red;
-$header-text-dropdown-color: #000;
-$header-link-active-color: red;
+/**
+/ Header variables
+*/
+
+//Colors
 $header-bg-color: #2a2d3e;
+$header-text-color: #fff;
+$header-text-dropdown-size: 14px;
+$header-text-dropdown-color: #000;
+$header-link-hover-color: red;
+$header-link-active-color: red;
+
+
+//Other
 $header-mobile-height: 100px; //paddings + logo height
 
-.header-container {
+/**
+/ Header Wrapper styles
+*/
+
+.sticky-header {
+    top: 0;
+    position: sticky;
+}
+.page-header {
     z-index: 100;
     background-color: $header-bg-color;
-}
-.fixed-header {
-    position: fixed;
-    width: 100%;
-}
-.site-header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1440px;
-    padding-top: $padding-container-vertical;
-    padding-bottom: $padding-container-vertical;
-    padding-left: $padding-container-horizontal;
-    padding-right: $padding-container-horizontal;
-    position: relative;
     a,
     p,
     span,
@@ -32,27 +32,35 @@ $header-mobile-height: 100px; //paddings + logo height
         color: $header-text-color;
     }
 }
-
+.page-header-inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $page-w;
+    padding: $pd-container-h;
+    position: relative;
+}
 
 /**
 / Site branding (Logo, Title)
 */
 
-.branding {
+.site-branding {
     align-items: center;
     display: flex;
     justify-content: space-between;
 }
-.logo {
+.site-logo {
     width: 40px;
     height: 40px;
     fill: $header-text-color;
 }
-.title {
+.site-title {
     font-size: 24px;
     margin-left: 1rem;
 }
-
 
 /**
 / Burger
@@ -60,6 +68,7 @@ $header-mobile-height: 100px; //paddings + logo height
 
 .burger-menu {
     background: none;
+    border: none;
     align-items: center;
     justify-content: space-between;
     display: none;
@@ -113,8 +122,10 @@ $header-mobile-height: 100px; //paddings + logo height
 }
 .burger-menu-label {
     margin-left: 1.5rem;
+    @media screen and (max-width: #{$bp-portrait}) {
+        display: none;
+    }
 }
-
 
 /**
 / Navigation
@@ -145,8 +156,8 @@ $header-mobile-height: 100px; //paddings + logo height
             display: block;
             border-top: 1px solid #414454;
             padding: $mobile-nav-link-padding;
-            padding-left: $padding-container-horizontal;
-            padding-right: $padding-container-horizontal;
+            padding-left: $pd-container-h;
+            padding-right: $pd-container-h;
         }
     }
 
@@ -155,16 +166,16 @@ $header-mobile-height: 100px; //paddings + logo height
         display: none;
         a {
             color: $header-text-color;
-            padding-left: $padding-container-horizontal + 15px !important;
-            padding-right: $padding-container-horizontal + 15px !important;
+            padding-left: $pd-container-h + 15px !important;
+            padding-right: $pd-container-h + 15px !important;
         }
     }
 
     .sub-menu .sub-menu {
         a {
             color: $header-text-color;
-            padding-left: $padding-container-horizontal + 30px !important;
-            padding-right: $padding-container-horizontal + 30px !important;
+            padding-left: $pd-container-h + 30px !important;
+            padding-right: $pd-container-h + 30px !important;
         }
     }
 
@@ -177,9 +188,11 @@ $header-mobile-height: 100px; //paddings + logo height
         top: 0;
         right: 0;
         padding: $mobile-nav-link-padding;
-        padding-left: $padding-container-horizontal;
-        padding-right: $padding-container-horizontal;
+        padding-left: $pd-container-h;
+        padding-right: $pd-container-h;
         color: $header-text-color;
+        cursor: pointer;
+        border-left: 1px solid #414454;
     }
 }
 
@@ -243,6 +256,7 @@ $header-mobile-height: 100px; //paddings + logo height
         a,
         span {
             color: $header-text-dropdown-color;
+            font-size: $header-text-dropdown-size;
         }
     }
     .sub-menu .sub-menu {

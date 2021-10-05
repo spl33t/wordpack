@@ -1,20 +1,106 @@
-body{
+/**
+/ Typography Variables
+*/
+
+// Text
+$font-body: "Montserrat";
+$line-height-body: 1.8;
+$text-size-body: 18px;
+$text-color: #000;
+$text-weight: 400;
+
+// Headings
+$headlines-font: "Montserrat";
+$headlines-color: #000;
+$headlines-weight: 800;
+$headlines-lineheight: 1.4;
+
+// Links
+$link-color: #00f;
+$link-hover: red;
+
+
+/**
+/ Text 
+*/
+
+body {
 	font-family: $font-body;
 	font-size: $text-size-body;
 	color: $text-color;
 	line-height: $line-height-body;
-	font-display: swap;
+	@media screen and (max-width: #{$bp-portrait}) {
+		font-size: $text-size-body - 2px;
+	}
 }
 
-button,
-input,
-select,
-optgroup,
-textarea {
-	color: $text-color;
-	font-family: $font-body;
-	font-size: $text-size-body;
-	font-weight: 400;
-	line-height: $line-height-body;
-	text-rendering: optimizeLegibility;
+/**
+/ Links 
+*/
+
+.page-content a {
+	color: $link-color;
+	border-bottom: 1px solid;
+	&:hover {
+		color: $link-hover;
+	}
+}
+
+/**
+/ Accent text 
+*/
+
+b,
+strong {
+	font-weight: 600;
+}
+
+/**
+/ Headings 
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $headlines-font;
+	font-weight: $headlines-weight;
+	line-height: $headlines-lineheight;
+}
+
+h1 {
+	font-size: 56px;
+	@media screen and (max-width: #{$bp-portrait}) {
+		font-size: 32px;
+	}
+}
+h2 {
+	font-size: 44px;
+	@media screen and (max-width: #{$bp-portrait}) {
+		font-size: 28px;
+	}
+}
+h3 {
+	font-size: 32px;
+	@media screen and (max-width: #{$bp-portrait}) {
+		font-size: 26px;
+	}
+}
+h4 {
+	font-size: 28px;
+	@media screen and (max-width: #{$bp-portrait}) {
+		font-size: 24px;
+	}
+}
+h5 {
+	font-size: 24px;
+	@media screen and (max-width: #{$bp-portrait}) {
+		font-size: 22px;
+	}
+}
+h6 {
+	font-size: 20px;
+
 }

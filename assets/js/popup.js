@@ -1,5 +1,9 @@
+import { formValidate } from './forms'
+
 
 jQuery(document).ready(function ($) {
+
+    const pageContent = document.querySelector('.page-content')
 
     let data = new Object()
 
@@ -61,7 +65,7 @@ jQuery(document).ready(function ($) {
         if (data.type == 'media') {
             template = `
                         <div class="content">
-                        <div class="popup__body">
+                        <div class="popup__body popup__body-media">
                             <div class="popup__close">x</div>
                             <img class="popup-media" src="${data.media}" alt="">
                         </div>
@@ -84,28 +88,44 @@ jQuery(document).ready(function ($) {
         if (data.type == 'form') {
             template = `
                         <div class="content">
-                        <div class="popup__body">
-                            <div class="popup__close">x</div>
-                            <h6 class="popup__title">${data.title}</h6>
-                            <p class="popup__text">${data.text}</p>
+                            <div class="popup__body">
+                                <div class="popup__close">x</div>
+                                <h6 class="popup__title">${data.title}</h6>
+                                <p class="popup__text">${data.text}</p>
 
-                            <form class="form-order" id="form-popup">
-                                <input class="xl-input" type="text" name="name" placeholder="Имя">
-                                <input class="xl-input _req" type="text" name="phone" required="true" placeholder="Телефон *">
-                                <textarea name="textarea" placeholder="Сообщение"></textarea>
-                                <textarea name="comment"></textarea>
-                                <textarea name="message"></textarea>
-                                <button class="button-brand xl-button">Отправить</button>
-                            </form>
-                        </div>
+                                <form class="form-order" id="form-popup">
+                                    <div class="input-field">
+                                        <input id="name" name="name" type="text">
+                                        <label for="name">Имя</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input class="_req" id="tel" name="tel" type="tel" required="">
+                                        <label for="tel">Телефон</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <textarea id="letter" name="letter"> </textarea>
+                                        <label for="letter">Сообщение</label>
+                                    </div>
+                                    <textarea name="comment"></textarea>
+                                    <textarea name="message"></textarea>
+                                    <input type="submit" value="Отправить">
+                                </form>
+
+                            </div>
                         </div>
                       `
         }
 
 
         popup.innerHTML = template
+        if (data.type == 'form') {
+            pageContent.append(popup)
+            formValidate()
+        } else {
+            pageContent.append(popup)
+        }
 
-        document.body.append(popup)
+    
         document.body.style.overflow = 'hidden'
     }
 

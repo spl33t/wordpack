@@ -1,10 +1,13 @@
     </main>
 
-    <footer class="page-footer content">
+    <footer class="page-footer">
+        <div class="page-footer-inner">
 
-        <?php echo date('l jS \of F Y h:i:s A'); ?>
+            <p><?php echo date('l jS \of F Y h:i:s A'); ?></p>
 
+        </div>
     </footer>
+
     <?php wp_footer(); ?>
 
     </body>

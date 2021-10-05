@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 40px;
-    * {
+    .input-field {
         margin-bottom: 20px;
+        width: 100%;
         &:last-child {
             margin-bottom: 0;
         }
@@ -14,6 +15,14 @@
 .popup-form,
 .popup-media {
     cursor: pointer;
+}
+
+.popup__body-media {
+    padding: 0 !important;
+    .popup-media {
+        width: 100%;
+        cursor: default;
+    }
 }
 
 .popup {

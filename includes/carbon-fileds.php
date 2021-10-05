@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Carbon Fields.
  */
@@ -61,10 +62,13 @@ function crb_attach_theme_options()
 				->set_width(33),
 			Field::make('text', 'site-tik-tok', 'Tik Tok')
 				->set_width(33),
+
 			//Другое, счётчики
 			Field::make('separator', 'site-other', 'Другое'),
-			Field::make('textarea', 'site-ya-metrika', 'Код счетчика Я.Метрика'),
-			Field::make('textarea', 'site-google-analytics', 'Код счетчика Google Analytics'),
+			Field::make('complex', 'site-head-include', 'Теги для head')
+				->add_fields('tag', array(
+					Field::make('textarea', 'tag'),
+				))
 		));
 
 	/*
@@ -81,6 +85,6 @@ function crb_attach_theme_options()
 add_action('after_setup_theme', 'crb_load');
 function crb_load()
 {
-    require_once( get_stylesheet_directory() . '/vendor/autoload.php' );
+	require_once(get_stylesheet_directory() . '/vendor/autoload.php');
 	\Carbon_Fields\Carbon_Fields::boot();
 }
