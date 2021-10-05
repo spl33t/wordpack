@@ -1,7 +1,7 @@
-#  wp-webpack
-<p>Theme for WordPress using WebPack</p>
+#  WordPack Theme
+<p>Wordpress theme compiled by Wepback</p>
 
-![wp-webpack](https://www.makedo.net/wp-content/uploads/2019/02/wpandwp.png)
+![wp-webpack](https://github.com/spl1t/wp-webpack/blob/master/screenshot.png?raw=true)
 
 **Инструкции к теме:**
 
