@@ -41,7 +41,7 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "svg4everybody": "^2.1.9",
-    "imask": "^6.1.0"
+    "imask": "^6.1.0",
+    "svg4everybody": "^2.1.9"
   }
 }

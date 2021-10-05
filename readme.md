@@ -19,9 +19,23 @@ cd wp-content
 RMDIR themes /S /Q
 mkdir themes
 cd themes
-git clone https://github.com/spl1t/wp-webpack.git
+git clone https://github.com/spl1t/wordpack.git
+cd wordpack
+npm i
 cd C:\localserver\OSPanel\domains
 rename C:\localserver\OSPanel\domains\project_name project_true
+```
+
+Start dev
+
+```
+npm run watch
+```
+
+Build prod
+
+```
+npm run build
 ```
 
 
@@ -53,7 +67,7 @@ rename C:\localserver\OSPanel\domains\project_name project_true
 <button class="popup-form button-white xl-button" data-title="Заголовок попапчика" data-text="Какой то текст">Попап с формой</button>
 ```
 
-**Попап и для lazyload для медиафайлов**  
+**Попап и lazyload для медиафайлов**  
 
 ```html
 <img class="popup-media lazy-img" data-src="http://wp-webpack/wp-content/uploads/2021/09/1.webp" alt="">

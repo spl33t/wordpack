@@ -41,13 +41,14 @@ module.exports = {
     },
     optimization: optimization(),
     plugins: [
+        
         // Создаем svg-спрайт с иконками
         new SVGSpritemapPlugin(
             'assets/img/icons/*.svg', // Путь относительно каталога с webpack.mix.js
             {
                 output: {
                     filename: 'icons.svg', // Путь относительно каталога public/
-                    svg4everybody: false, // Отключаем плагин "SVG for Everybody"
+                    svg4everybody: true, // Отключаем плагин "SVG for Everybody"
                     svg: {
                         sizes: false // Удаляем инлайновые размеры svg
                     },
@@ -63,6 +64,8 @@ module.exports = {
                 },
             }
         ),
+    
+
         new MiniCssExtractPlugin(),
     ],
     module: {

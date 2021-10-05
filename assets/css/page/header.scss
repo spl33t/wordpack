@@ -59,6 +59,9 @@ $header-mobile-height: 100px; //paddings + logo height
 }
 .site-title {
     font-size: 24px;
+    @media screen and (max-width: #{$bp-portrait}) {
+        font-size: 16px;
+    }
     margin-left: 1rem;
 }
 
@@ -135,7 +138,8 @@ $header-mobile-height: 100px; //paddings + logo height
 @media screen and (max-width: #{$bp-landscape}) {
     $mobile-nav-link-padding: 15px;
     .nav-main {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
         left: 0;
         position: fixed;
         top: $header-mobile-height;
@@ -145,9 +149,11 @@ $header-mobile-height: 100px; //paddings + logo height
         overflow: auto;
         width: 100vw;
         background-color: $header-bg-color;
+        transition: 300ms ease-in-out;
     }
     .nav-main.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 
     li.menu-item {
