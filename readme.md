@@ -1,9 +1,14 @@
 #  WordPack theme
-<p>Wordpress theme compiled by Wepback</p>
+
+WordPress theme compiled by WepPack
+
+![wp-webpack](https://github.com/spl1t/wp-webpack/blob/master/screenshot.png?raw=true)
 
 ## Start
 
-Paste code to terminal, the result will be installation last version Wordpress and WordPack theme
+Paste code to terminal, the result will be installation last version WordPress and WordPack theme
+
+Do not forget сhange project name on last row!
 
 ```
 cd C:\localserver\OSPanel\domains
@@ -19,7 +24,7 @@ cd C:\localserver\OSPanel\domains
 rename C:\localserver\OSPanel\domains\project_name project_true
 ```
 
-![wp-webpack](https://github.com/spl1t/wp-webpack/blob/master/screenshot.png?raw=true)
+
 
 **Инструкции к теме:**
 
