@@ -10,7 +10,6 @@ $header-text-dropdown-color: #000;
 $header-link-hover-color: red;
 $header-link-active-color: red;
 
-
 //Other
 $header-mobile-height: 100px; //paddings + logo height
 
@@ -193,12 +192,25 @@ $header-mobile-height: 100px; //paddings + logo height
         position: absolute;
         top: 0;
         right: 0;
-        padding: $mobile-nav-link-padding;
+        padding: 20px;
         padding-left: $pd-container-h;
         padding-right: $pd-container-h;
-        color: $header-text-color;
         cursor: pointer;
-        border-left: 1px solid #414454;
+        box-sizing: content-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: $header-text-color;
+            pointer-events: none;
+        }
+        &.on-toggle {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
     }
 }
 
@@ -230,6 +242,9 @@ $header-mobile-height: 100px; //paddings + logo height
             display: flex;
             justify-content: center;
             pointer-events: none;
+            width: 20px;
+            height: 20px;
+            fill: $header-text-color;
         }
     }
     // Sub Menus
@@ -259,10 +274,13 @@ $header-mobile-height: 100px; //paddings + logo height
             width: 100%;
             height: $sub-menu-before-margin-top;
         }
-        a,
-        span {
+        a {
             color: $header-text-dropdown-color;
             font-size: $header-text-dropdown-size;
+        }
+        li .dropdown-toggle {
+            fill: $header-text-dropdown-color;
+            transform: rotate(270deg);
         }
     }
     .sub-menu .sub-menu {

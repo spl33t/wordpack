@@ -119,10 +119,10 @@ jQuery(document).ready(function ($) {
 
         popup.innerHTML = template
         if (data.type == 'form') {
-            pageContent.append(popup)
+            pageContent.appendChild(popup)
             formValidate()
         } else {
-            pageContent.append(popup)
+            pageContent.appendChild(popup)
         }
 
     

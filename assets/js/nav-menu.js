@@ -43,11 +43,12 @@ function closeMenu() {
 
 // Дропдовн по нажатию
 document.addEventListener('click', (e) => {
-    if (e.target.className == 'dropdown-toggle') {
+    //console.log(e)
+    if (e.target.classList.contains('dropdown-toggle') == true) {
+        e.target.classList.toggle('on-toggle')
         const ul = e.target.nextElementSibling
         ul.classList.toggle('active')
     }
-
 })
 
 

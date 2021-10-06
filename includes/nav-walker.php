@@ -36,10 +36,10 @@ class Nav_Walker extends \Walker_Nav_Menu
         if (isset($args->has_dropdown) && $args->has_dropdown) {
             // Get the icon
             ob_start();
-            echo '+';
+            echo get_template_directory_uri() . '/dist/icons.svg#icon-arrow_drop_down"';
             $icon = ob_get_clean();
-            $output .= '<span class="dropdown-toggle" aria-expanded="false" aria-label="Open child menu">';
-            $output .= $icon . '</span>';
+            $output .= '<div class="dropdown-toggle" aria-expanded="false" aria-label="Open child menu">';
+            $output .=  '<svg> <use xlink:href="' . $icon . '" /> </svg></div>';
 
             /*
                  * The `.dropdown-menu` container needs to have a labelledby

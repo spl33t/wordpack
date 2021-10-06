@@ -10,6 +10,7 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<?php $scripts = carbon_get_theme_option('site-head-include'); ?>
 	<?php if ($scripts) : ?>
@@ -24,8 +25,6 @@
 
 
 <body <?php body_class('no-js'); ?>>
-
-
 
 	<?php wp_body_open(); ?>
 

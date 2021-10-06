@@ -19,6 +19,10 @@
         font-weight: 600;
         transition: all 0.2s ease-out;
         cursor: pointer;
+        &:hover {
+            background-color: #054aaf;
+            border-color: #054aaf;
+        }
         &:focus {
             border: 2px solid $brand-color;
         }

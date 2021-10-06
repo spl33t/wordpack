@@ -6,27 +6,49 @@
 define('WORDPACK_VERSION', '2.0');
 
 /**
+ * ENVIRONMENT Define
+ */
+if (substr($_SERVER['REMOTE_ADDR'], 0, 4) == '127.' || $_SERVER['REMOTE_ADDR'] == '::1') {
+	define('ENVIRONMENT', 'development');
+	ini_set('error_reporting', E_ALL);
+	ini_set('display_errors', 'On');
+} else {
+	define('ENVIRONMENT', 'production');
+}
+
+/**
  * Loads scripts and styles
  */
-add_action('wp_enqueue_scripts', function () {
-	wp_enqueue_script('jquery');
-	// CSS
-	wp_enqueue_style(
-		'styles', // идентификатор стиля
-		get_stylesheet_directory_uri() . '/dist/main.css',  // URL стиля
-		array(), // без зависимостей
-		time() // версия
-	);
+if ('include scripts') {
+	function scriptEnvVersion()
+	{
+		if (ENVIRONMENT == 'production') {
+			return WORDPACK_VERSION;
+		} else {
+			return time();
+		}
+	}
 
-	// JavaScript
-	wp_enqueue_script(
-		'scripts', // идентификатор скрипта
-		get_stylesheet_directory_uri() . '/dist/main.js', // URL скрипта
-		array(), // без зависимостей
-		time(), // версия
-		true
-	);
-});
+	add_action('wp_enqueue_scripts', function () {
+		wp_enqueue_script('jquery');
+		// CSS
+		wp_enqueue_style(
+			'styles', // идентификатор стиля
+			get_stylesheet_directory_uri() . '/dist/main.css',  // URL стиля
+			array(), // без зависимостей
+			scriptEnvVersion() // версия
+		);
+
+		// JavaScript
+		wp_enqueue_script(
+			'scripts', // идентификатор скрипта
+			get_stylesheet_directory_uri() . '/dist/main.js', // URL скрипта
+			array(), // без зависимостей
+			scriptEnvVersion(), // версия
+			true
+		);
+	});
+}
 
 /**
  * Loads other functions
