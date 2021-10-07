@@ -61,7 +61,7 @@ if ('Loads Other Functions') {
 	//require get_theme_file_path('/includes/disable-wp-comments.php');
 	require get_theme_file_path('/includes/disable-gutenberg.php');
 	require get_theme_file_path('/includes/disable-emojis.php');
-	//require get_theme_file_path('/includes/disable-oembed.php');
+	require get_theme_file_path('/includes/disable-oembed.php');
 	require get_theme_file_path('/includes/seo.php');
 	require get_theme_file_path('/includes/nav-walker.php');
 	//require get_theme_file_path('/includes/debug.php');

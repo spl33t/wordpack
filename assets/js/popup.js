@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
     popup.className = "popup";
     popup.addEventListener('click', (e) => {
         let target = e.target.className
-        if (target == 'content' || target == 'popup' || target == 'popup__close') {
+        if (target == 'popup-inner' || target == 'popup' || target == 'popup__close') {
             removePopup()
         }
     })
@@ -64,7 +64,7 @@ jQuery(document).ready(function ($) {
 
         if (data.type == 'media') {
             template = `
-                        <div class="content">
+                        <div class="popup-inner">
                         <div class="popup__body popup__body-media">
                             <div class="popup__close">x</div>
                             <img class="popup-media" src="${data.media}" alt="">
@@ -75,7 +75,7 @@ jQuery(document).ready(function ($) {
 
         if (data.type == 'message') {
             template = `
-                        <div class="content">
+                        <div class="popup-inner">
                         <div class="popup__body">
                             <div class="popup__close">x</div>
                             <h6 class="popup__title">${data.title}</h6>
@@ -87,7 +87,7 @@ jQuery(document).ready(function ($) {
 
         if (data.type == 'form') {
             template = `
-                        <div class="content">
+                        <div class="popup-inner">
                             <div class="popup__body">
                                 <div class="popup__close">x</div>
                                 <h6 class="popup__title">${data.title}</h6>
@@ -125,7 +125,7 @@ jQuery(document).ready(function ($) {
             pageContent.appendChild(popup)
         }
 
-    
+
         document.body.style.overflow = 'hidden'
     }
 

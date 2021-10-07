@@ -1,6 +1,6 @@
 <?php
 
-function pretxt($data)
+function debugpre($data)
 {
 	echo '<pre>';
 	echo $data;
