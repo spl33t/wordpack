@@ -1,6 +1,5 @@
 import { formValidate } from './forms'
 
-
 jQuery(document).ready(function ($) {
 
     const pageContent = document.querySelector('.page-content')

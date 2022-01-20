@@ -1,5 +1,6 @@
 {
     "require": {
-        "htmlburger/carbon-fields": "^3.3"
+        "htmlburger/carbon-fields": "^3.3",
+        "rosell-dk/webp-convert": "^2.9"
     }
 }

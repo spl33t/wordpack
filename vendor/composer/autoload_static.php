@@ -7,6 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInitebf7334b1294863263689a32be27ef09
 {
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WebPConvert\\' => 12,
+        ),
+        'I' => 
+        array (
+            'ImageMimeTypeGuesser\\' => 21,
+        ),
+        'E' => 
+        array (
+            'ExecWithFallback\\' => 17,
+        ),
         'C' => 
         array (
             'Carbon_Fields\\' => 14,
@@ -14,6 +26,18 @@ class ComposerStaticInitebf7334b1294863263689a32be27ef09
     );
 
     public static $prefixDirsPsr4 = array (
+        'WebPConvert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/webp-convert/src',
+        ),
+        'ImageMimeTypeGuesser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-guesser/src',
+        ),
+        'ExecWithFallback\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/exec-with-fallback/src',
+        ),
         'Carbon_Fields\\' => 
         array (
             0 => __DIR__ . '/..' . '/htmlburger/carbon-fields/core',

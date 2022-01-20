@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/htmlburger/carbon-fields" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/rosell-dk/webp-convert" />
+      <path value="$PROJECT_DIR$/vendor/rosell-dk/image-mime-type-guesser" />
+      <path value="$PROJECT_DIR$/vendor/rosell-dk/exec-with-fallback" />
+    </include_path>
+  </component>
+</project>
