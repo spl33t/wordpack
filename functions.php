@@ -57,7 +57,7 @@ if ('include scripts') {
 require get_theme_file_path('/includes/carbon-fileds.php'); // CRB init
 require get_theme_file_path('/includes/theme-options/index.php'); // Theme options
 require get_theme_file_path('/includes/forms/index.php'); // Forms
-require get_theme_file_path('/includes/modal-windows/index.php'); // Modal windows
+require get_theme_file_path('/includes/popups/index.php'); // Modal windows
 require get_theme_file_path('/includes/seo/index.php'); // SEO
 require get_theme_file_path('/includes/custom-post-type.php');
 require get_theme_file_path('/includes/duplicate-posts.php');

@@ -28,15 +28,15 @@ add_action('wp_head', function () {
     else $page_number = '';
 
     if (is_home() || is_front_page()) $seo_title = $nameblog . $title_separator . $title;
-    elseif (is_singular())            $seo_title = $title;
-    elseif (is_tag())                 $seo_title = 'Тег: ' . $tag . $title_separator . $nameblog;
-    elseif (is_category())            $seo_title = 'Категория: ' . $cat . $title_separator . $nameblog;
-    elseif (is_archive())             $seo_title = 'Архив: ' . $archive . $title_separator . $nameblog;
-    elseif (is_search())              $seo_title = 'Поиск: ' . $search . $title_separator . $nameblog;
-    elseif (is_404())                 $seo_title = '404 - Not Found: ' . $url . $title_separator . $nameblog;
+    elseif (is_singular()) $seo_title = $title;
+    elseif (is_tag()) $seo_title = 'Тег: ' . $tag . $title_separator . $nameblog;
+    elseif (is_category()) $seo_title = 'Категория: ' . $cat . $title_separator . $nameblog;
+    elseif (is_archive()) $seo_title = 'Архив: ' . $archive . $title_separator . $nameblog;
+    elseif (is_search()) $seo_title = 'Поиск: ' . $search . $title_separator . $nameblog;
+    elseif (is_404()) $seo_title = '404 - Not Found: ' . $url . $title_separator . $nameblog;
     else                              $seo_title = $nameblog . $title_separator . $title;
 
-    echo  '<title>' . esc_attr(do_shortcode($seo_title)  . $page_number) . '</title>' . "\n";
+    echo '<title>' . esc_attr(do_shortcode($seo_title) . $page_number) . '</title>' . "\n";
     // End title
 
     // Description
@@ -47,11 +47,11 @@ add_action('wp_head', function () {
     $description_article = str_replace(array("\n", "\r", "\t"), ' ', $description_article);
     $description_article = mb_substr($description_article, 0, 155);
     $description_article = rtrim($description_article, "!,.-");
-    $description_article = substr($description_article, 0, strrpos($description_article, ' '))  . '...';
+    $description_article = substr($description_article, 0, strrpos($description_article, ' ')) . '...';
 
 
     if (!empty($custom_description)) $description = $custom_description;
-    elseif (is_singular('post'))  $description = $description_article;
+    elseif (is_singular('post')) $description = $description_article;
 
     echo '<meta name="description" content="' . esc_attr(do_shortcode($description)) . '">' . "\n";
 
@@ -74,7 +74,7 @@ add_action('wp_head', function () {
         echo '<meta property="og:type" content="website">' . "\n";
     }
     // og:title
-    echo '<meta property="og:title" content="' .  esc_attr(do_shortcode($seo_title) . $page_number)  . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr(do_shortcode($seo_title) . $page_number) . '">' . "\n";
     // og:desc
     echo '<meta property="og:description" content="' . esc_attr(do_shortcode($description)) . '">' . "\n";
     // og:url
@@ -82,15 +82,13 @@ add_action('wp_head', function () {
     // og:sitename
     echo '<meta property="og:site_name" content="' . get_bloginfo('name', 'display') . '">' . "\n";
     // og:image
-    if (get_the_post_thumbnail_url()) echo '<meta property="og:image" content="' . get_the_post_thumbnail_url()  . '">' . "\n";
+    if (get_the_post_thumbnail_url()) echo '<meta property="og:image" content="' . get_the_post_thumbnail_url() . '">' . "\n";
 }, -1000);
-
 
 
 //Exclude author pages in XML Sitemap
 add_filter('wp_sitemaps_add_provider', 'remove_author_category_pages_from_sitemap', 10, 2);
-function remove_author_category_pages_from_sitemap($provider, $name)
-{
+function remove_author_category_pages_from_sitemap($provider, $name) {
     if ('users' === $name) {
         return false;
     }
@@ -99,8 +97,7 @@ function remove_author_category_pages_from_sitemap($provider, $name)
 
 // Redirect from authors page to home page
 add_action('template_redirect', 'my_custom_disable_author_page');
-function my_custom_disable_author_page()
-{
+function my_custom_disable_author_page() {
     global $wp_query;
 
     if (is_author()) {
@@ -111,26 +108,23 @@ function my_custom_disable_author_page()
     }
 }
 
-//Префикс блог в uri для постов
-function add_rewrite_rules($wp_rewrite)
-{
+// Blog prefix for post
+add_action('generate_rewrite_rules', 'add_rewrite_rules');
+function add_rewrite_rules($wp_rewrite) {
     $new_rules = array(
         'blog/(.+?)/?$' => 'index.php?post_type=post&name=' . $wp_rewrite->preg_index(1),
     );
 
     $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 }
-add_action('generate_rewrite_rules', 'add_rewrite_rules');
 
-function change_blog_links($post_link, $id = 0)
-{
-
+add_filter('post_link', 'change_blog_links', 1, 3);
+function change_blog_links($post_link, $id = 0) {
     $post = get_post($id);
-
     if (is_object($post) && $post->post_type == 'post') {
         return home_url('/blog/' . $post->post_name . '/');
     }
-
     return $post_link;
 }
-add_filter('post_link', 'change_blog_links', 1, 3);
+
+

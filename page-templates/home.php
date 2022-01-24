@@ -7,8 +7,8 @@ Template Name: Front Page
 <?php get_header() ?>
 
 <?php
-echo get_form_by_id(18); // refactor
-echo get_modal_by_id(38); // refactor
+//echo get_form_by_id(18); // refactor
+echo get_popup_by_id(45); // refactor
 ?>
 
 

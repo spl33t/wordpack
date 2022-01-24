@@ -1,8 +1,8 @@
 <?php
 
-add_action('init', 'register_post_types_modal');
-function register_post_types_modal() {
-    register_post_type('modal', [
+add_action('init', 'register_post_types_popup');
+function register_post_types_popup() {
+    register_post_type('popup', [
         'label' => null,
         'labels' => [
             'name' => 'Модальные окна', // основное название для типа записи
