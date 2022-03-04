@@ -12,15 +12,21 @@
 @import 'elements/tables';
 @import 'elements/lists';
 @import 'elements/buttons';
-@import 'elements/popup';
-@import 'elements/titles';
+@import 'elements/modal';
+@import 'elements/headings';
 
 /* Страница, шапка, тело, футер */
-@import "page/page";
-@import "page/header";
-@import "page/content";
-@import "page/footer";
+@import "layout/page";
+@import "layout/header";
+@import "layout/content";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/archive";
+@import "layout/single";
+@import "layout/archive-search";
 
-/* Template Parts */
+/* Template parts */
 @import "template-parts/hero";
 
+/* Page templates */
+@import "page-templates/demo";

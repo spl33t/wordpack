@@ -1,24 +1,33 @@
 <?php get_header(); ?>
 
-<div class="content">
-	<? if (have_posts()) : ?>
-		<header>
-			<h1><? printf(__('Результаты поиска: %s'), '<span>' . get_search_query() . '</span>'); ?></h1>
-			<br />
-			<? get_search_form(); ?>
-		</header>
-		<?php while (have_posts()) : the_post(); ?>
-			<br />
-			<?php get_template_part('template-parts/article') ?>
-		<?php endwhile ?>
-	<? else : ?>
-		<header>
-			<h1><? printf(__('По запросу: %s'), '<span>' . get_search_query() . '</span>'); ?></h1>
-			<p>Ничего не найдено, попробуйте еще раз.</p>
-			<br />
-			<? get_search_form(); ?>
-		</header>
-	<? endif; ?>
-</div>
+<?php get_template_part('/template-parts/archive/hero-search'); ?>
+
+<?php if (get_search_query() == '') : // Пустой запрос
+
+else : ?>
+    <div class="container-with-sidebar archive-container">
+        <div class="content-with-sidebar archive-articles">
+            <?php
+            if (have_posts()) :
+                while (have_posts()) :
+                    the_post();
+                    get_template_part('/template-parts/archive/article');
+                endwhile;
+            else :
+                echo "<h2>Записей нет.</h2>";
+            endif;
+            ?>
+            <div class="navigation">
+                <div class="next-posts"><?php next_posts_link(); ?></div>
+                <div class="prev-posts"><?php previous_posts_link(); ?></div>
+            </div>
+        </div>
+
+        <aside class="sidebar archive-sidebar">
+            <?php get_template_part('/template-parts/archive/categories-list') ?>
+        </aside>
+    </div>
+<?php endif; ?>
+
 
 <?php get_footer(); ?>

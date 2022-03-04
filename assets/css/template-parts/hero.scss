@@ -3,48 +3,60 @@
 */
 
 //Colors
-$hero-bg: transparent;
-$hero-text-color: #000;
+$hero-bg: #2a2d3e;
+$hero-text-color: #fff;
 $hero-link-hover-color: red;
 $hero-link-active-color: red;
 
 .hero {
-    background-color: $hero-bg;
-    border-bottom: 1px solid #eee;
-    p,
-    h1,
-    h2,
-    span {
-        color: $hero-text-color;
+  background-color: $hero-bg;
+  border-bottom: 1px solid #eee;
+
+  p,
+  h1,
+  h2,
+  span {
+    color: $hero-text-color;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: #{$bp-landscape}) {
+      flex-direction: column;
     }
+  }
+}
+
+.hero-picture {
+  width: 40%;
+  margin-right: 2rem;
+  @media screen and (max-width: #{$bp-landscape}) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+}
+
+.hero-info {
+  width: 60%;
+  @media screen and (max-width: #{$bp-landscape}) {
+    width: 100%;
+  }
 }
 
 .hero__title {
-    margin-bottom: 10px;
+  font-size: 46px;
+  margin-bottom: 20px;
+  @media screen and (max-width: #{$bp-landscape}) {
+    font-size: 26px;
+  }
 }
 
 .hero__subtitle {
-    margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
-#form-hero {
-    display: flex;
-    flex-wrap: wrap;
-    .input-field {
-        margin-right: 20px;
-        :last-child {
-            margin-right: 0;
-        }
-    }
-}
 
-@media screen and (max-width: #{$bp-landscape}) {
-    #form-hero {
-        flex-direction: column;
-        .input-field {
-            width: 100%;
-            margin-right: 0;
-            margin-bottom: 20px;
-        }
-    }
-}
+

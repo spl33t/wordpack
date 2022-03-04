@@ -1,6 +1,6 @@
-/** 
-/ Navigation
-*/
+/**
+ / Navigation
+ */
 
 const headerMenuWrapper = document.querySelector('.main-navigation-wrapper')
 const mainNav = headerMenuWrapper.querySelector('.nav-main')
@@ -9,20 +9,16 @@ const burgerBtn = headerMenuWrapper.querySelector('.burger-menu')
 const burgerLabel = burgerBtn.querySelector('.burger-menu-label')
 
 
-
 burgerBtn.addEventListener('click', function () {
     this.classList.toggle('active');
-    upd()
-})
 
-
-function upd() {
     if (burgerBtn.classList.contains('active')) {
         openMenu()
     } else {
         closeMenu()
     }
-}
+})
+
 
 function openMenu() {
     burgerBtn.classList.add('active');
@@ -57,8 +53,7 @@ function checkForWindowResize() {
 
     if (window.innerWidth <= 768) { // Small
 
-    }
-    else { // Large
+    } else { // Large
         closeMenu()
     }
 }

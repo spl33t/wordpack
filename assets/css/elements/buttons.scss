@@ -2,7 +2,7 @@
 / Global button styles
 */
 
-.page-content {
+body {
     button,
     input[type="button"],
     input[type="submit"],
@@ -15,10 +15,11 @@
         border-radius: $border-radius-forms;
         padding: $padding-forms;
         height: $height-forms;
-        width: inherit;
         font-weight: 600;
         transition: all 0.2s ease-out;
-        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        vertical-align: bottom;
         &:hover {
             background-color: #054aaf;
             border-color: #054aaf;
@@ -90,5 +91,18 @@
                 color: #fff;
             }
         }
+    }
+}
+
+button {
+    .button-white {
+        svg {
+          fill: #000;
+        }
+    }
+    svg {
+        width: 30px;
+        height: 30px;
+        margin-right: 1rem;
     }
 }

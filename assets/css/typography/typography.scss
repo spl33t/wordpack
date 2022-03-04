@@ -38,11 +38,14 @@ body {
 / Links 
 */
 
-.page-content a {
-	color: $link-color;
-	border-bottom: 1px solid;
-	&:hover {
-		color: $link-hover;
+
+.page-content  {
+	a {
+		color: $link-color;
+		border-bottom: 1px solid;
+		&:hover {
+			color: $link-hover;
+		}
 	}
 }
 

@@ -3,7 +3,7 @@
  * Disable WORDPRESS COMMENTS
  */
 add_action('admin_init', function () {
-	// Redirect any user trying to access comments page
+	// Redirect any user trying to access comments layout
 	global $pagenow;
 
 	if ($pagenow === 'edit-comments.php') {
@@ -30,7 +30,7 @@ add_filter('pings_open', '__return_false', 20, 2);
 // Hide existing comments
 add_filter('comments_array', '__return_empty_array', 10, 2);
 
-// Remove comments page in menu
+// Remove comments layout in menu
 add_action('admin_menu', function () {
 	remove_menu_page('edit-comments.php');
 });

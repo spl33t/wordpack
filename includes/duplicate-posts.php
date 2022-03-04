@@ -9,7 +9,7 @@
 // Add the duplicate link to action list for post_row_actions
 // for "post" and custom post types
 add_filter('post_row_actions', 'rd_duplicate_post_link', 10, 2);
-// for "page" post type
+// for "layout" post type
 add_filter('page_row_actions', 'rd_duplicate_post_link', 10, 2);
 
 

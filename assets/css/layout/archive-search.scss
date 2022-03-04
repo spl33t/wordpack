@@ -1,0 +1,26 @@
+body.search {
+  .searchform {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      @media screen and (max-width: #{$bp-landscape}) {
+        flex-direction: column;
+        > * {
+          width: 100% !important;
+          margin-bottom: 20px;
+        }
+      }
+
+      label {
+        width: 100%;
+      }
+
+      input[type='text'] {
+        width: 360px;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+}
+

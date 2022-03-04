@@ -1,31 +1,9 @@
-#form-popup {
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    .input-field {
-        margin-bottom: 20px;
-        width: 100%;
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
+.modal.is-active {
+    display: block;
 }
 
-.popup-message,
-.popup-form,
-.popup-media {
-    cursor: pointer;
-}
-
-.popup__body-media {
-    padding: 0 !important;
-    .popup-media {
-        width: 100%;
-        cursor: default;
-    }
-}
-
-.popup {
+.modal {
+    display: none;
     position: fixed;
     left: 0;
     right: 0;
@@ -33,13 +11,13 @@
     bottom: 0;
     background-color: #000a;
     z-index: 5000;
-    .popup-inner {
+    .modal-inner {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
         height: 100%;
-        .popup__body {
+        .modal__body {
             background-color: #fff;
             width: 600px;
             height: auto;
@@ -62,7 +40,7 @@
             }
             @media screen and (max-width: #{$bp-portrait}) {
             }
-            .popup__close {
+            .modal__close {
                 position: absolute;
                 top: 10px;
                 right: 10px;
@@ -78,10 +56,10 @@
                 line-height: 1;
                 cursor: pointer;
             }
-            .popup__title {
+            .modal__title {
                 font-size: 32px;
                 font-weight: 800;
-                margin-bottom: 10px;
+                margin-bottom: 40px;
                 @media screen and (max-width: #{$bp-tablet}) {
                 }
                 @media screen and (max-width: #{$bp-landscape}) {
@@ -90,7 +68,7 @@
                 @media screen and (max-width: #{$bp-portrait}) {
                 }
             }
-            .popup__text {
+            .modal__text {
                 margin-bottom: 20px;
 
                 @media screen and (max-width: #{$bp-tablet}) {

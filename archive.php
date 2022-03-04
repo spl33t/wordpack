@@ -1,38 +1,35 @@
 <?php get_header(); ?>
 
-<div class="content">
+<?php get_template_part('/template-parts/archive/hero') ?>
 
-	<?php if (have_posts()) : ?>
-		<header>
-			<?php
-			the_archive_title('<h1 class="page-title">', '</h1>');
-			?>
-		</header>
+    <div class="container-with-sidebar archive-container">
+        <div class="content-with-sidebar archive-articles">
+            <?php
+            // проверяем есть ли посты в глобальном запросе - переменная $wp_query
+            if (have_posts()) {
+                // перебираем все имеющиеся посты и выводим их
+                while (have_posts()) {
+                    the_post();
+                    get_template_part('/template-parts/archive/article');
+                }
+                ?>
+                <div class="navigation">
+                    <div class="next-posts"><?php next_posts_link(); ?></div>
+                    <div class="prev-posts"><?php previous_posts_link(); ?></div>
+                </div>
+                <?php
+            } // постов нет
+            else {
+                echo "<h2>Записей нет.</h2>";
+            }
+            ?>
 
-	<?php while (have_posts()) :
-			the_post();
+        </div>
 
-			the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
+        <aside class="sidebar archive-sidebar">
+            <?php get_template_part('/template-parts/archive/categories-list') ?>
+        </aside>
 
-
-			the_content(
-				sprintf(
-					wp_kses(
-
-						__('Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentynineteen'),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-
-		endwhile;
-	endif; ?>
-
-</div>
+    </div>
 
 <?php get_footer(); ?>

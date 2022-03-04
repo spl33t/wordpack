@@ -44,6 +44,7 @@
   "dependencies": {
     "imask": "^6.1.0",
     "mdn-polyfills": "^5.20.0",
+    "regenerator-runtime": "^0.13.9",
     "svg4everybody": "^2.1.9"
   }
 }

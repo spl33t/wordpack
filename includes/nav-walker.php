@@ -96,7 +96,7 @@ class Nav_Walker extends \Walker_Nav_Menu
              * menu_order - порядок в меню
              * object_id - ID объекта меню
              * type - тип объекта меню (таксономия, пост, произвольно)
-             * object - какая это таксономия / какой тип поста (page /category / post_tag и т д)
+             * object - какая это таксономия / какой тип поста (layout /category / post_tag и т д)
              * type_label - название данного типа с локализацией (Рубрика, Страница)
              * post_parent - ID родительского поста / категории
              * post_title - заголовок, который был у поста, когда он был добавлен в меню

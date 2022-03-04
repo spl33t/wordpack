@@ -20,6 +20,25 @@ jQuery(document).ready(function ($) {
 });
 
 
+export function observerByClass(elemClass, callback) {
+    let observer = new MutationObserver(mutationRecords => {
+        if (mutationRecords[0].addedNodes[0].classList !== undefined) {
+            if (mutationRecords[0].addedNodes[0].classList.contains(elemClass)) {
+                let elem = mutationRecords[0].addedNodes[0]
+                callback(elem)
+            }
+        }
+    });
+
+// наблюдать за всем, кроме атрибутов
+    observer.observe(document.body, {
+        childList: true, // наблюдать за непосредственными детьми
+        subtree: true, // и более глубокими потомками
+        characterDataOldValue: true // передавать старое значение в колбэк
+    });
+}
+
+
 
 
 
