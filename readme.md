@@ -21,6 +21,7 @@ Install theme
 git clone https://github.com/spl1t/wordpack.git
 cd wordpack
 npm i
+npm run build
 exit
 ```
 
