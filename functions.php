@@ -167,7 +167,7 @@ if (isset($_GET['activated']) && is_admin()) {
 
     $blog_page = array(
         'post_type' => 'page',
-        'post_title' => $demo_page_title,
+        'post_title' => $blog_page_title,
         'post_status' => 'publish',
         'post_author' => 1,
     );
