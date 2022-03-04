@@ -7,7 +7,7 @@
 
 <section id="hero" class="hero">
     <div class="content">
-        <?php getImageByUrl($_SERVER['HTTP_HOST'] . '/wp-content/themes/devWp/assets/img/wordpack-hero-demo.png', 'hero-picture'); ?>
+        <?php getImageByUrl('http://' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/wordpack/assets/img/wordpack-hero-demo.png', 'hero-picture'); ?>
         <div class="hero-info">
             <h1 class="hero__title">Hi, this is theme worked <br/> on WebPack</h1>
             <p class="hero__subtitle">Fast, easy and frendly for SEO</p>
