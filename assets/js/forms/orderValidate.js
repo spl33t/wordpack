@@ -56,9 +56,13 @@ export default function orderValidate(form) {
             }
         })
 
+
+
         // Send form
         if (form.querySelectorAll('._error-input').length === 0) {
             sendForm(form)
+        } else {
+            form.querySelectorAll('.form__message-alert')[0].parentElement.scrollIntoView()
         }
 
     }

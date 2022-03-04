@@ -7,7 +7,7 @@
 
 <section id="hero" class="hero">
     <div class="content">
-        <?php getImageByID(44, 'hero-picture'); ?>
+        <?php getImageByUrl('http://malena77.beget.tech/wp-content/themes/devWp/assets/img/wordpack-hero-demo.png', 'hero-picture'); ?>
         <div class="hero-info">
             <h1 class="hero__title">Hi, this is theme worked <br/> on WebPack</h1>
             <p class="hero__subtitle">Fast, easy and frendly for SEO</p>

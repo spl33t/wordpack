@@ -78,6 +78,10 @@ html {
   width: 50px;
   height: 50px;
   fill: $header-text-color;
+  @media screen and (max-width: #{$bp-portrait}) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .site-title-wrapper {
@@ -85,21 +89,29 @@ html {
   flex-direction: column;
   line-height: 1.2;
   margin-left: 1rem;
+  @media screen and (max-width: #{$bp-portrait}) {
+    margin-left: 0.5rem;
+  }
 }
 
 .site-title {
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 600;
   @media screen and (max-width: #{$bp-portrait}) {
     font-size: 16px;
   }
-
 }
 
 .site-subtitle {
-letter-spacing: 1px;
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 125px;
+  font-size: 14px;
   @media screen and (max-width: #{$bp-portrait}) {
-    font-size: 16px;
+    font-size: 12px;
+    width: 95px;
   }
 }
 

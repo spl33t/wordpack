@@ -223,9 +223,19 @@ if (isset($_GET['activated']) && is_admin()) {
 
 function getImageByID($id, $class) {
     $imageLink = wp_get_attachment_image_url($id, 'full');
-    if ($imageLink) {
+    if (file_exists($imageLink . '.webp')) {
         $template = '<picture class="' . $class . '">
                     <source srcset=" ' . $imageLink . '.webp " type="image/webp">
+                    <source srcset="' . $imageLink . '" type="image/jpeg">
+                    <img src="' . $imageLink . '">
+                </picture>';
+
+        echo $template;
+        return;
+    }
+
+    if ($imageLink) {
+        $template = '<picture class="' . $class . '">
                     <source srcset="' . $imageLink . '" type="image/jpeg">
                     <img src="' . $imageLink . '">
                 </picture>';
@@ -238,13 +248,28 @@ function getImageByID($id, $class) {
 }
 
 function getImageByUrl($url, $class) {
-    $template = '<picture class="' . $class . '">
+    if (file_exists($url . '.webp')) {
+        $template = '<picture class="' . $class . '">
                     <source srcset=" ' . $url . '.webp " type="image/webp">
                     <source srcset="' . $url . '" type="image/jpeg">
                     <img src="' . $url . '">
                 </picture>';
 
-    echo $template;
+        echo $template;
+        return;
+    }
+
+    if ($url) {
+        $template = '<picture class="' . $class . '">
+                    <source srcset="' . $url . '" type="image/jpeg">
+                    <img src="' . $url . '">
+                </picture>';
+
+        echo $template;
+        return;
+    }
+
+    echo 'Изображение не найдено';
 }
 
 
